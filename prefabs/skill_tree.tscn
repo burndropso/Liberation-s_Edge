@@ -1,0 +1,316 @@
+[gd_scene load_steps=24 format=3 uid="uid://c07bky13ifi3y"]
+
+[ext_resource type="PackedScene" uid="uid://cwdi77g2sjx8r" path="res://prefabs/skill_button.tscn" id="1_320bu"]
+[ext_resource type="FontFile" uid="uid://bvnbadiwmwb2p" path="res://assets/RevMiniPixel.ttf" id="1_xsfbf"]
+[ext_resource type="Texture2D" uid="uid://dnl0hap4fnlj3" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon36.png" id="3_js6gn"]
+[ext_resource type="Texture2D" uid="uid://chrkocr2ev1b6" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon12.png" id="3_rlxjb"]
+[ext_resource type="Theme" uid="uid://bq2ogq8s3qtc3" path="res://themes/description_hover.tres" id="4_eej27"]
+[ext_resource type="Texture2D" uid="uid://d3u1ymdcl2wju" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon8.png" id="4_poj4c"]
+[ext_resource type="Texture2D" uid="uid://dmgibisymm7d7" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon30.png" id="5_pf8cp"]
+[ext_resource type="Texture2D" uid="uid://c7ui2jyd2ijfq" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon35.png" id="6_12fia"]
+[ext_resource type="Texture2D" uid="uid://ctllk3m1x2asq" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon34.png" id="6_tjodo"]
+[ext_resource type="Texture2D" uid="uid://c32kukfggwdds" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon33.png" id="7_2vnff"]
+[ext_resource type="Texture2D" uid="uid://cnch2lifef0sd" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon22.png" id="7_5hvmo"]
+[ext_resource type="Texture2D" uid="uid://df205s6w5dblw" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon7.png" id="8_ua5og"]
+[ext_resource type="Texture2D" uid="uid://ccde1ufsswrxq" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon24.png" id="9_1xfh7"]
+[ext_resource type="Texture2D" uid="uid://drow1ry7y76pw" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon20.png" id="9_mt4jq"]
+[ext_resource type="Texture2D" uid="uid://dwvrsii853pvm" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon17.png" id="10_crboo"]
+[ext_resource type="Texture2D" uid="uid://b06rvf31ae07s" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon28.png" id="11_63r68"]
+[ext_resource type="Texture2D" uid="uid://c0dd1px7r2hpd" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon9.png" id="11_hn24m"]
+[ext_resource type="Texture2D" uid="uid://b2biii05x7q4h" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon27.png" id="11_qthhc"]
+[ext_resource type="Texture2D" uid="uid://bekpard1yr4ji" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon10.png" id="17_p0pjf"]
+[ext_resource type="Texture2D" uid="uid://c8la0w0n0oone" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon11.png" id="18_cnf7k"]
+[ext_resource type="Script" path="res://scripts/UI/skill_point_display.gd" id="21_ngl2k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7kr46"]
+bg_color = Color(0, 0, 0, 0.815686)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 0.67451)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_ph2a5"]
+Panel/styles/panel = SubResource("StyleBoxFlat_7kr46")
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="Panel" parent="."]
+z_index = 1
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -668.0
+offset_top = -336.0
+offset_right = 668.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ph2a5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 52.0
+offset_top = 48.0
+offset_right = -52.0
+offset_bottom = 134.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_xsfbf")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "
+[center][wave amp]Force Powers"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_xsfbf")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "
+[center][wave]Combat Abilities"
+fit_content = true
+scroll_active = false
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_xsfbf")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "
+[center][wave]Survival Skills"
+fit_content = true
+scroll_active = false
+
+[node name="Force" parent="." instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 560.0
+offset_right = 416.0
+offset_bottom = 624.0
+hover_msg = "[center]Force Abilities[left]Enhance your resilience and self-sufficiency. This branch focuses on boosting your character's physical endurance, health regeneration, and resourcefulness. Develop the skills necessary to survive harsh environments, recover quickly from injuries, and sustain yourself through the toughest challenges."
+is_root_node = true
+skill_icon = ExtResource("3_js6gn")
+
+[node name="SkillButton" parent="Force" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -88.0
+offset_top = -96.0
+offset_right = -24.0
+offset_bottom = -32.0
+skill_name = "DOUBLE_JUMP"
+hover_msg = "[center]DOUBLE JUMP[left]Harness the power of the Force to perform an extraordinary second leap! Unlocking this skill allows your character to execute an additional jump while in mid-air, enabling you to reach higher platforms and outmaneuver ground-based enemies and obstacles with ease."
+skill_icon = ExtResource("3_rlxjb")
+
+[node name="SkillButton" parent="Force/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -120.0
+offset_right = -48.0
+offset_bottom = -56.0
+skill_name = "FORCE_PUSH"
+hover_msg = "[center]Force Push[left]Through initial training and basic mastery of the Force, your character has acquired the ability to push enemies and objects away with a burst of energy. This early access skill allows you to create distance, knock back adversaries, and clear obstacles, giving you a strategic edge in the early stages of your journey."
+skill_icon = ExtResource("5_pf8cp")
+
+[node name="SkillButton2" parent="Force/SkillButton/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -104.0
+offset_right = 128.0
+offset_bottom = -40.0
+skill_name = "FORCE_PULL"
+hover_msg = "[center]Force Pull[left]Your spiritual conection grows stronger, you mastered the ability to draw enemies and objects towards them using the Force. This skill allows you to pull targets from a distance, bringing them within striking range, giving you a tactical advantage in various combat situations."
+skill_icon = ExtResource("6_12fia")
+
+[node name="SkillButton3" parent="Force/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 88.0
+offset_top = -89.0
+offset_right = 152.0
+offset_bottom = -25.0
+skill_name = "FORCE_FREEZE"
+hover_msg = "[center]Force Freeze[left]Through deep meditation and advanced training, your unlocked the ability to temporarily immobilize enemies in front of you. This power makes targets motionless for a few seconds, giving you a strategic advantage in combat."
+skill_icon = ExtResource("7_5hvmo")
+
+[node name="SkillButton" parent="Force/SkillButton/SkillButton3" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -191.0
+offset_right = 40.0
+offset_bottom = -127.0
+skill_name = "BULLET_DEFLECTION"
+hover_msg = "[center]Bullet Deflection[left]You're now a exceptional master, you developed the ability to deflect bullets back to enemies the same way the sword parry skill works. (so it requires unlocking the sword)"
+skill_icon = ExtResource("8_ua5og")
+
+[node name="Combat" parent="." instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 568.0
+offset_right = 752.0
+offset_bottom = 632.0
+hover_msg = "[center]Combat abilities[left]Hone your martial prowess and weapon skills. This branch is dedicated to improving your character's effectiveness in direct combat, with upgrades to melee attacks, weapon handling, and defensive techniques. Become a formidable fighter, capable of taking on multiple enemies and excelling in the heat of battle."
+is_root_node = true
+skill_icon = ExtResource("9_1xfh7")
+
+[node name="SkillButton" parent="Combat" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = -112.0
+offset_right = 128.0
+offset_bottom = -48.0
+skill_name = "SWORD"
+hover_msg = "[center]SWORD[left]A curved, single-edged sword with a narrow blade and ornate hilt, ideal for swift and deadly attacks."
+skill_icon = ExtResource("9_mt4jq")
+
+[node name="SkillButton" parent="Combat/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -136.0
+offset_right = 8.0
+offset_bottom = -72.0
+skill_name = "PARRY"
+hover_msg = "[center]PARRY[left]With increased experience, you can now parry incoming attacks. Defend just a moment before a melee strike lands, creating an opportunity for powerful a faltal counterattack. Ideal for maintaining control in combat and turning your enemies' aggression against them"
+skill_icon = ExtResource("10_crboo")
+
+[node name="SkillButton" parent="Combat/SkillButton/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 104.0
+offset_top = -80.0
+offset_right = 168.0
+offset_bottom = -16.0
+hover_msg = "[center]Nothing yet"
+skill_icon = ExtResource("11_qthhc")
+
+[node name="SkillButton" parent="Combat/SkillButton/SkillButton/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -144.0
+offset_top = -64.0
+offset_right = -80.0
+offset_bottom = 0.0
+hover_msg = "[center]Nothing yet"
+skill_icon = ExtResource("11_hn24m")
+
+[node name="SkillButton2" parent="Combat/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -168.0
+offset_top = -57.0
+offset_right = -104.0
+offset_bottom = 7.0
+skill_name = "GUN"
+hover_msg = "[center]HANDGUN[left]A versatile ranged weapon. Perfect for engaging foes while maintaining a safe distance or targeting hard-to-reach adversaries."
+skill_icon = ExtResource("4_poj4c")
+
+[node name="BaseStats" parent="." instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 984.0
+offset_top = 584.0
+offset_right = 1048.0
+offset_bottom = 648.0
+hover_msg = "[center]Survival Skills[left]Enhance your resilience and self-sufficiency. This branch focuses on boosting your character's physical endurance, health regeneration, and resourcefulness. Develop the skills necessary to survive harsh environments, recover quickly from injuries, and sustain yourself through the toughest challenges."
+is_root_node = true
+skill_icon = ExtResource("11_63r68")
+
+[node name="SkillButton" parent="BaseStats" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = -97.0
+offset_right = 160.0
+offset_bottom = -33.0
+skill_name = "FASTER_REGEN"
+hover_msg = "[center]Faster Health Regen[left]Through rigorous training and countless battles, your character's body has become more accustomed to healing wounds rapidly. This increased resilience allows for quicker health regeneration, enabling you to recover from injuries faster and remain effective in prolonged combat situations. Essential for enduring tough encounters and staying in the fight."
+skill_icon = ExtResource("6_tjodo")
+
+[node name="SkillButton" parent="BaseStats/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 96.0
+offset_top = -80.0
+offset_right = 160.0
+offset_bottom = -16.0
+skill_name = "MAX_HEALTH_BOOST"
+hover_msg = "[center]Max Health Boost[left]Through rigorous training and hard-earned resilience, your stamina and toughness have greatly increased. This enhanced physical condition boosts your overall health, allowing you to endure more damage and face tougher challenges with greater confidence."
+skill_icon = ExtResource("7_2vnff")
+
+[node name="SkillButton" parent="BaseStats/SkillButton/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = 48.0
+offset_top = -151.0
+offset_right = 112.0
+offset_bottom = -87.0
+hover_msg = "[center]Nothing yet"
+skill_icon = ExtResource("17_p0pjf")
+
+[node name="SkillButton2" parent="BaseStats/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -167.0
+offset_right = 24.0
+offset_bottom = -103.0
+hover_msg = "[center]Nothing yet"
+skill_icon = ExtResource("18_cnf7k")
+
+[node name="SkillButton3" parent="BaseStats/SkillButton" instance=ExtResource("1_320bu")]
+layout_mode = 0
+offset_left = -112.0
+offset_top = -71.0
+offset_right = -48.0
+offset_bottom = -7.0
+skill_name = "WALL_DRAG"
+hover_msg = "[center]Wall Dragging[left] You became so athletic that you're now able to drag on walls, allowing you to use them to jump"
+
+[node name="hover_description" type="RichTextLabel" parent="."]
+visible = false
+z_index = 99
+z_as_relative = false
+clip_contents = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 960.0
+offset_top = 144.0
+offset_right = 1160.0
+offset_bottom = 259.0
+theme = ExtResource("4_eej27")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+metadata/_edit_use_anchors_ = true
+
+[node name="skill_point_display" type="RichTextLabel" parent="."]
+z_index = 1
+layout_mode = 0
+offset_left = 80.0
+offset_top = 664.0
+offset_right = 328.0
+offset_bottom = 704.0
+theme_override_colors/default_color = Color(0.886262, 0.886261, 0.886262, 1)
+theme_override_fonts/normal_font = ExtResource("1_xsfbf")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "Skill Points :"
+fit_content = true
+scroll_active = false
+script = ExtResource("21_ngl2k")

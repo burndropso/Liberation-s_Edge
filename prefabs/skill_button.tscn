@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwdi77g2sjx8r"]
+
+[ext_resource type="Texture2D" uid="uid://b34kjeumr4a5s" path="res://assets/Dark Series/Skill Icons/Icons Separated/Icon1.png" id="1_vlkvv"]
+[ext_resource type="Script" path="res://scripts/hud/skill_button.gd" id="2_wphdu"]
+
+[node name="SkillButton" type="TextureButton"]
+z_index = 50
+z_as_relative = false
+offset_right = 64.0
+offset_bottom = 64.0
+disabled = true
+toggle_mode = true
+texture_normal = ExtResource("1_vlkvv")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_wphdu")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "0/3"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = 2
+z_as_relative = false
+width = 4.0
+default_color = Color(0.439216, 0.439216, 0.439216, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

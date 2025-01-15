@@ -1,0 +1,115 @@
+[gd_scene load_steps=5 format=3 uid="uid://elbub380ep46"]
+
+[ext_resource type="Script" path="res://scripts/menu/title_screen.gd" id="1_3v22h"]
+[ext_resource type="Texture2D" uid="uid://drhrhqr70i3b5" path="res://assets/Main_Menu/bg.jpg" id="1_cclr2"]
+[ext_resource type="FontFile" uid="uid://bvnbadiwmwb2p" path="res://assets/RevMiniPixel.ttf" id="2_hna4k"]
+[ext_resource type="Theme" uid="uid://b7o35tgj3l1np" path="res://themes/main_menu_btn.tres" id="2_jrl0s"]
+
+[node name="title_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3v22h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_cclr2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 500
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 108
+
+[node name="TextureRect" type="RichTextLabel" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_hna4k")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center][wave][pulse]Liberation's Edge	"
+fit_content = true
+
+[node name="start_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jrl0s")
+text = "Story mode"
+
+[node name="multiplayer_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jrl0s")
+text = "Multiplayer"
+
+[node name="options_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jrl0s")
+text = "Options"
+
+[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_jrl0s")
+text = "Quit"
+
+[node name="devlog_notes" type="RichTextLabel" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_hna4k")
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+text = "
+
+[center]Devlog notes:
+[left]
+
+- This works with controller too
+
+ - Wall jump incorporated bug buggy
+
+ - Story mode is being postponed and from now on  Multiplayer will be my focus right now
+
+ - Options don't do anything
+
+ - If you're on itch.io this 'quit' button isn't for you xD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ [right]V: 0.4.9  "
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

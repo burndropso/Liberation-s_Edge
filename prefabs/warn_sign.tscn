@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciuf6rt12865f"]
+
+[ext_resource type="Texture2D" uid="uid://b6cf0y6ad4q3y" path="res://assets/Mini FX, Items & UI/Mini UI/Speech_Emotes (16 x 16).png" id="1_l263v"]
+[ext_resource type="Script" path="res://scripts/prefabs/warning_sign.gd" id="1_sh0po"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wk4oy"]
+size = Vector2(322, 20)
+
+[node name="warning_sign" type="Node2D"]
+position = Vector2(0, -136)
+script = ExtResource("1_sh0po")
+
+[node name="texture" type="Sprite2D" parent="."]
+modulate = Color(0.831373, 0.709804, 0.572549, 1)
+z_index = -1
+position = Vector2(0, 88)
+scale = Vector2(3, 3)
+texture = ExtResource("1_l263v")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="area_sign" type="Area2D" parent="."]
+position = Vector2(0, 136)
+collision_layer = 2
+
+[node name="collision" type="CollisionShape2D" parent="area_sign"]
+shape = SubResource("RectangleShape2D_wk4oy")
+
+[connection signal="body_entered" from="area_sign" to="." method="_on_area_sign_body_entered"]
+[connection signal="body_exited" from="area_sign" to="." method="_on_area_sign_body_exited"]

@@ -1,0 +1,109 @@
+[gd_scene load_steps=16 format=3 uid="uid://bf7fiyegxtv3l"]
+
+[ext_resource type="Script" path="res://scripts/prefabs/bullet.gd" id="1_o72dq"]
+[ext_resource type="Texture2D" uid="uid://boy76etta4xc3" path="res://assets/Laser Sprites/07.png" id="2_jutuh"]
+[ext_resource type="Texture2D" uid="uid://mrsu02lic8rp" path="res://assets/Laser Sprites/05.png" id="2_wjbrl"]
+[ext_resource type="Texture2D" uid="uid://cbsatksaljq46" path="res://assets/Laser Sprites/12.png" id="3_xb2sc"]
+[ext_resource type="Texture2D" uid="uid://djkhpwsvs6kpv" path="res://assets/Laser Sprites/15.png" id="3_yee2s"]
+[ext_resource type="Texture2D" uid="uid://ccpiq63huj1dw" path="res://assets/Flare00.PNG" id="4_vt1ba"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8626"]
+atlas = ExtResource("2_jutuh")
+region = Rect2(0, 0, 123, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gba4m"]
+atlas = ExtResource("3_yee2s")
+region = Rect2(0, 0, 243, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s3vry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8626")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gba4m")
+}],
+"loop": false,
+"name": &"panda_bullet",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wjbrl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xb2sc")
+}],
+"loop": false,
+"name": &"player_bullet",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_686vd"]
+height = 90.0
+
+[sub_resource type="Gradient" id="Gradient_0xo8j"]
+offsets = PackedFloat32Array(0.504167, 1)
+colors = PackedColorArray(0.623214, 0.185343, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lf3l4"]
+gradient = SubResource("Gradient_0xo8j")
+
+[sub_resource type="Curve" id="Curve_tann5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_v2g87"]
+curve = SubResource("Curve_tann5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rlcbo"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.3
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.01
+scale_max = 0.04
+scale_curve = SubResource("CurveTexture_v2g87")
+color_ramp = SubResource("GradientTexture1D_lf3l4")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+
+[node name="bullet" type="Area2D" groups=["bullets"]]
+scale = Vector2(0.2, 0.2)
+collision_layer = 8
+collision_mask = 37
+script = ExtResource("1_o72dq")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_s3vry")
+animation = &"player_bullet"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(22, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_686vd")
+debug_color = Color(0.996078, 0, 0.207843, 0.419608)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="bullet_explosion" type="GPUParticles2D" parent="."]
+texture_filter = 1
+position = Vector2(15, 0)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_rlcbo")
+texture = ExtResource("4_vt1ba")
+lifetime = 0.55
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

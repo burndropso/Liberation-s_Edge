@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtw0i6tfrflsk"]
+
+[ext_resource type="Script" path="res://scripts/hud/ui_weapon_selector.gd" id="1_vp0cs"]
+[ext_resource type="Texture2D" uid="uid://d3cdwu38oajr4" path="res://assets/UI_Ruben/pistol_icon.png" id="2_kr6b3"]
+[ext_resource type="Script" path="res://scripts/hud/weapon_icon.gd" id="3_4eml7"]
+[ext_resource type="Texture2D" uid="uid://bet8vx0mrmjw0" path="res://assets/UI_Ruben/punch_icon.png" id="4_uufhb"]
+[ext_resource type="Texture2D" uid="uid://cdtf5isqmgiy3" path="res://assets/UI_Ruben/sword_icon.png" id="5_67n41"]
+
+[node name="ui_weapon_selector" type="MarginContainer" node_paths=PackedStringArray("top_weapon", "middle_weapon", "bottom_weapon")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 488.0
+offset_top = -112.0
+offset_right = 576.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_vp0cs")
+top_weapon = NodePath("VBoxContainer/top")
+middle_weapon = NodePath("VBoxContainer/middle")
+bottom_weapon = NodePath("VBoxContainer/bottom")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = -10
+alignment = 1
+
+[node name="top" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_kr6b3")
+stretch_mode = 5
+script = ExtResource("3_4eml7")
+weapon_name = "GUN"
+
+[node name="middle" type="TextureRect" parent="VBoxContainer"]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_uufhb")
+stretch_mode = 5
+script = ExtResource("3_4eml7")
+weapon_name = "MELEE"
+
+[node name="bottom" type="TextureRect" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_67n41")
+stretch_mode = 5
+script = ExtResource("3_4eml7")
+weapon_name = "SWORD"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
